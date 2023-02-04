@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import { Tarefa } from "../../types/tarefa";
 import Item from "./Item";
 import style from "./Lista.module.scss";
 
-function Lista() {
-  let [tarefas, setTarefas] = useState([
-    { nome: "Java", tempo: "02:00:00" },
-    { nome: "Python", tempo: "02:00:00" },
-  ]);
+type ListaProps = {
+  tarefas: Tarefa[]
+}
+
+function Lista({tarefas}: ListaProps) {
+
   return (
     <aside className={style.listaTarefas}>
       <h2>Estudos do dia</h2>
       <ul>
         {tarefas.map((item, index) => (
-          <Item tempo={item.tempo} tarefa={item.nome} key={index} />
+          <Item key={index} item={item}/>
         ))}
       </ul>
     </aside>
