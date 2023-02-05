@@ -7,11 +7,19 @@ import style from './App.module.scss'
 
 function App() {
   let [tarefas, setTarefas] = useState<Tarefa[]>([]);
+  let [selecionado, setSelecionado] = useState<Tarefa>();
+
+  function selecionaTarefa(tarefaSelecionada: Tarefa) {
+    setSelecionado(tarefaSelecionada);
+    setTarefas(tarefasAnteriores => tarefasAnteriores.map(tarefa => ({ ...tarefa, selecionado: tarefa.id === tarefaSelecionada.id ? true : false })))
+    console.log(tarefas)
+  }
+
   return (
     <div className={style.AppStyle}>
-      <Formulario setTarefas={setTarefas}/>
-      <Lista tarefas={tarefas}></Lista>
-      <Cronometro/>
+      <Formulario setTarefas={setTarefas} />
+      <Lista selecionaTarefa={selecionaTarefa} tarefas={tarefas}></Lista>
+      <Cronometro />
     </div>
   );
 }

@@ -2,14 +2,14 @@ import { Tarefa } from "../../../types/tarefa";
 import style from "../Lista.module.scss";
 
 type ItemProps ={
-  item: Tarefa
+  tarefa: Tarefa
+  selecionaTarefa: (tarefa: Tarefa) => void
 }
-export default function Item({item} : ItemProps) {
-  console.log(item.id);
+export default function Item({tarefa, selecionaTarefa} : ItemProps) {
     return ( 
-    <li className={style.item}>
-        <h3>{item.tarefa}</h3>
-        <span>{item.tempo}</span>
+    <li className={`${style.item} ${tarefa.selecionado ? style.itemSelecionado : ''}`} onClick={() => selecionaTarefa(tarefa)}>
+        <h3>{tarefa.tarefa}</h3>
+        <span>{tarefa.tempo}</span>
       </li>
     );
 }
