@@ -1,5 +1,5 @@
 import { Tarefa } from "../../../types/tarefa";
-import style from "../Lista.module.scss";
+import style from "./Item.module.scss";
 
 type ItemProps ={
   tarefa: Tarefa
